@@ -165,10 +165,7 @@ spec:
       path: /
       hosts:
         # virtualHost (default value is pi.hole) will be appended to the hosts
-        - host: &host "pihole.${SECRET_DOMAIN}"
-          paths:
-            - path: /
-              pathType: Prefix
+        - &host "pihole.${SECRET_DOMAIN}"
       tls:
         - hosts:
             - *host
@@ -327,7 +324,7 @@ spec:
       # -- Add custom dns entries to override the dns resolution. All lines will be added to the pihole dnsmasq configuration.
       customDnsEntries:
         - address=/pihole.home/10.0.1.30
-        - address=/pihole.${SECRET_DOMAIN}/10.0.1.30
+        - address=/pihole.${SECRET_DOMAIN}/10.0.1.22
       # - address=/bar.foo/192.168.178.11
 
       # -- Dnsmasq reads the /etc/hosts file to resolve ips. You can add additional entries if you like
