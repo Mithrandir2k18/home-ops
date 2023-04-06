@@ -161,16 +161,14 @@ spec:
         hajimari.io/icon: dns
         nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         # nginx.ingress.kubernetes.io/app-root: /admin
-        cert-manager.io/cluster-issuer: "letsencrypt-staging"
-        external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
-        external-dns/is-public: "true"
+        cert-manager.io/cluster-issuer: "letsencrypt-staging-local"
       path: /
       hosts:
         # virtualHost (default value is pi.hole) will be appended to the hosts
         - host: &host "pihole.home.${SECRET_DOMAIN}"
           paths:
-            -path: /
-            pathType: Prefix
+            - path: /
+              pathType: Prefix
       tls:
         - hosts:
             - *host
