@@ -28,7 +28,8 @@ spec:
   values:
     hajimari:
       title: Apps
-      darkTheme: espresso
+      darkTheme: tron
+      lightTheme: lime
       alwaysTargetBlank: true
       showGreeting: false
       showAppGroups: false
@@ -37,9 +38,48 @@ spec:
       showGlobalBookmarks: false
       showAppUrls: false
       defaultEnable: true
+      defaultSearchProvider: Startpage
+      searchProviders:
+        - name: Startpage
+          token: sp
+          icon: mdi:source-commit-start
+          searchUrl: https://www.startpage.com/sp/search?query={query}&abp=-1&t=night&lui=english&sc=40fZen0iNfbb20&cat=web&prfe=91999b25d02ee3576b56678b7b1d164fa7f919f3f511d3e820849bfbf2a8d1e5ebc386cb6f514123340a63a4ae5e50698a6466ede6ff3c3bc59d5a604879b33a907512645f53863b16297bcf42
+          url: https://www.startpage.com
+        - name: Google
+          token: g
+          icon: simple-icons:google
+          searchUrl: https://www.google.com/search?q={query}
+          url: https://www.google.com
+        - name: DuckDuckGo
+          token: d
+          icon: simple-icons:duckduckgo
+          searchUrl: https://duckduckgo.com/?q={query}
+          url: https://duckduckgo.com
+        - name: IMDB
+          token: i
+          icon: simple-icons:imdb
+          searchUrl: https://www.imdb.com/find?q={query}
+          url: https://www.imdb.com
+        - name: Reddit
+          token: r
+          icon: simple-icons:reddit
+          searchUrl: https://www.reddit.com/search?q={query}
+          url: https://www.reddit.com
+        - name: YouTube
+          token: 'y'
+          icon: simple-icons:youtube
+          searchUrl: https://www.youtube.com/results?search_query={query}
+          url: https://www.youtube.com
+        - name: Spotify
+          token: s
+          icon: simple-icons:spotify
+          searchUrl: hhttps://open.spotify.com/search/{query}
+          url: https://open.spotify.com
       namespaceSelector:
         matchNames:
           - default
+          - monitoring
+          - networking
     ingress:
       main:
         enabled: true
