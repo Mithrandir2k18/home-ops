@@ -68,7 +68,7 @@ spec:
       externalTrafficPolicy: Local
 
       # -- A fixed `spec.loadBalancerIP` for the DNS Service
-      loadBalancerIP: "10.0.1.30"
+      loadBalancerIP: "${PIHOLE_SERVICES_ADDR}"
       # -- A fixed `spec.loadBalancerIP` for the IPv6 DNS Service
       loadBalancerIPv6: ""
 
@@ -96,7 +96,7 @@ spec:
       externalTrafficPolicy: Local
 
       # -- A fixed `spec.loadBalancerIP` for the DHCP Service
-      loadBalancerIP: "10.0.1.30"
+      loadBalancerIP: "${PIHOLE_SERVICES_ADDR}"
       # -- A fixed `spec.loadBalancerIP` for the IPv6 DHCP Service
       loadBalancerIPv6: ""
 
@@ -137,7 +137,7 @@ spec:
       externalTrafficPolicy: Local
 
       # -- A fixed `spec.loadBalancerIP` for the web interface Service
-      loadBalancerIP: "10.0.1.30"
+      loadBalancerIP: "${PIHOLE_SERVICES_ADDR}"
       # -- A fixed `spec.loadBalancerIP` for the IPv6 web interface Service
       loadBalancerIPv6: ""
 
@@ -160,8 +160,8 @@ spec:
       annotations:
         hajimari.io/icon: dns
         nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
-        # nginx.ingress.kubernetes.io/app-root: /admin
-        cert-manager.io/cluster-issuer: "letsencrypt-staging"
+        nginx.ingress.kubernetes.io/app-root: /admin
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
       path: /
       hosts:
         # virtualHost (default value is pi.hole) will be appended to the hosts
@@ -325,7 +325,7 @@ spec:
       # -- Add custom dns entries to override the dns resolution. All lines will be added to the pihole dnsmasq configuration.
       customDnsEntries:
         - address=/pihole.home/10.0.1.30
-        - address=/pihole.home.${SECRET_DOMAIN}/10.0.1.22
+        - address=/pihole.home.${SECRET_DOMAIN}/${METALLB_INGRESS_ADDR}
       # - address=/bar.foo/192.168.178.11
 
       # -- Dnsmasq reads the /etc/hosts file to resolve ips. You can add additional entries if you like
