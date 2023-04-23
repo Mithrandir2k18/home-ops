@@ -326,6 +326,8 @@ spec:
       # -- Add custom dns entries to override the dns resolution. All lines will be added to the pihole dnsmasq configuration.
       customDnsEntries:
         - address=/pihole.home.${SECRET_DOMAIN}/${METALLB_INGRESS_ADDR}
+        - address=/truenas.home.${SECRET_DOMAIN}/10.0.0.2
+        - address=/opnsense.home.${SECRET_DOMAIN}/10.0.0.1
         - address=/hajimari.${SECRET_DOMAIN}/${METALLB_INGRESS_ADDR}
         - address=/kubernetes.${SECRET_DOMAIN}/${METALLB_INGRESS_ADDR}
       # - address=/bar.foo/192.168.178.11
