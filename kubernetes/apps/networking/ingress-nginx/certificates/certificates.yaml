@@ -13,6 +13,9 @@ spec:
   dnsNames:
     - "${SECRET_DOMAIN}"
     - "*.${SECRET_DOMAIN}"
+    - "home.${SECRET_DOMAIN}"
+    - "*.home.${SECRET_DOMAIN}"
+
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -28,3 +31,5 @@ spec:
   dnsNames:
     - "${SECRET_DOMAIN}"
     - "*.${SECRET_DOMAIN}"
+    - "home.${SECRET_DOMAIN}"
+    - "*.home.${SECRET_DOMAIN}"
