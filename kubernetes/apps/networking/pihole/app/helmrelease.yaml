@@ -162,7 +162,7 @@ spec:
         hajimari.io/enable: "true"
         nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         nginx.ingress.kubernetes.io/app-root: /admin
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        # cert-manager.io/cluster-issuer: "letsencrypt-production"
       path: /
       hosts:
         # virtualHost (default value is pi.hole) will be appended to the hosts
@@ -170,8 +170,7 @@ spec:
       tls:
         - hosts:
             - *host
-          secretName: "${SECRET_DOMAIN/./-}-staging-pihole"
-
+          secretName: "${SECRET_DOMAIN/./-}-production-tls"
     # -- Probes configuration
     probes:
       # -- probes.liveness -- Configure the healthcheck for the ingress controller
