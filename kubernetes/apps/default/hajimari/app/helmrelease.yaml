@@ -89,13 +89,14 @@ spec:
             10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
           hajimari.io/enable: "false"
         hosts:
-          - host: &host "hajimari.${SECRET_DOMAIN}"
+          - host: &host "hajimari.${SECRET_DOMAIN_INTERNAL}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
               - *host
+            secretName: "${SECRET_DOMAIN/./-}-production-tls"
     podAnnotations:
       configmap.reloader.stakater.com/reload: hajimari-settings
     persistence:

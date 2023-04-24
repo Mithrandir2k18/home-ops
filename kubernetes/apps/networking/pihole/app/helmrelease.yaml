@@ -166,7 +166,7 @@ spec:
       path: /
       hosts:
         # virtualHost (default value is pi.hole) will be appended to the hosts
-        - &host "pihole.home.${SECRET_DOMAIN}"
+        - &host "pihole.${SECRET_DOMAIN_INTERNAL}"
       tls:
         - hosts:
             - *host
@@ -324,11 +324,11 @@ spec:
 
       # -- Add custom dns entries to override the dns resolution. All lines will be added to the pihole dnsmasq configuration.
       customDnsEntries:
-        - address=/pihole.home.${SECRET_DOMAIN}/${METALLB_INGRESS_ADDR}
-        - address=/truenas.home.${SECRET_DOMAIN}/10.0.0.2
-        - address=/opnsense.home.${SECRET_DOMAIN}/10.0.0.1
-        - address=/hajimari.${SECRET_DOMAIN}/${METALLB_INGRESS_ADDR}
-        - address=/kubernetes.${SECRET_DOMAIN}/${METALLB_INGRESS_ADDR}
+        - address=/pihole.${SECRET_DOMAIN_INTERNAL}/${METALLB_INGRESS_ADDR}
+        - address=/hajimari.${SECRET_DOMAIN_INTERNAL}/${METALLB_INGRESS_ADDR}
+        - address=/kubernetes.${SECRET_DOMAIN_INTERNAL}/${METALLB_INGRESS_ADDR}
+        - address=/opnsense.${SECRET_DOMAIN_INTERNAL}/10.0.0.1
+        - address=/truenas.${SECRET_DOMAIN_INTERNAL}/10.0.0.2
       # - address=/bar.foo/192.168.178.11
 
       # -- Dnsmasq reads the /etc/hosts file to resolve ips. You can add additional entries if you like

@@ -37,16 +37,16 @@ spec:
       enabled: true
       className: nginx
       annotations:
-        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        # cert-manager.io/cluster-issuer: "letsencrypt-production"
         nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         hajimari.io/icon: mdi:kubernetes
         hajimari.io/enable: "true"
       hosts:
-        - &host "kubernetes.${SECRET_DOMAIN}"
+        - &host "kubernetes.${SECRET_DOMAIN_INTERNAL}"
       tls:
         - hosts:
             - *host
-          secretName: kubernetes-dashboard-tls-production
+          secretName: "${SECRET_DOMAIN/./-}-production-tls"
     metricsScraper:
       enabled: true
     serviceMonitor:
