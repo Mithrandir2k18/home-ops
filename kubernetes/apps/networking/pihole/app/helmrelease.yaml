@@ -329,6 +329,7 @@ spec:
         - address=/kubernetes.${SECRET_DOMAIN_INTERNAL}/${METALLB_INGRESS_ADDR}
         - address=/opnsense.${SECRET_DOMAIN_INTERNAL}/10.0.0.1
         - address=/truenas.${SECRET_DOMAIN_INTERNAL}/10.0.0.2
+        - address=/truenasapps.${SECRET_DOMAIN_INTERNAL}/10.0.0.3
       # - address=/bar.foo/192.168.178.11
 
       # -- Dnsmasq reads the /etc/hosts file to resolve ips. You can add additional entries if you like
