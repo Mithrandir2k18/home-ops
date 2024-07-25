@@ -30,3 +30,7 @@ spec:
       create: true
     runners:
       secret: gitlab-runner-secret
+      config: |
+        [[runners]]
+          [runners.kubernetes]
+            poll_timeout = 600  # Set timeout for e.g. image pull in seconds
